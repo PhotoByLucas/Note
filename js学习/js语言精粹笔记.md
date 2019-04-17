@@ -11,3 +11,6 @@ number string bool null undefined object fuction
 之运用一个全局变量来减少全局变量污染 
 
 函数 到40页
+### 数组
+map方法
+filter 方法

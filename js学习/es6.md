@@ -1,21 +1,88 @@
-### let 
+# 2.let 和 const命令
+#### let 
 + 适合使用在for中
 + 不存在变量作用域提升
+  + var的变量提升：变量在声明前就可以使用，值为undefined
 + 只在当前块级作用域中有用
-+ let不允许函数内重复声明
+  + 未声明的时候会存在暂时性'死区'
+  ~~~
+    typeof x; // ReferenceError
+    let x;
+    //作为比较，如果一个变量根本没有被声明，使用typeof反而不会报错。
+    typeof undeclared_variable // "undefined"
 
-### const
+  ~~~  
++ let不允许块级作用域内重复声明
++ 应该避免在块级作用域内声明函数，函数声明会提升到所在的块级作用域的头部。
+  ~~~
+  // 浏览器的 ES6 环境
+  function f() { console.log('I am outside!'); }
+  (
+    function () {
+
+      if (false) {
+        // 重复声明一次函数f
+        function f() { console.log('I am inside!'); }
+      }
+
+      f();
+    }()
+  );
+  // Uncaught TypeError: f is not a function
+  // 浏览器的 ES6 环境
+  function f() { console.log('I am outside!'); }
+  (
+    function () {
+      var f = undefined;
+      if (false) {
+        function f() { console.log('I am inside!'); }
+      }
+
+      f();
+    }()
+  );
+  // Uncaught TypeError: f is not a function
+    ~~~
+#### const
 + 只读且不可改变
 + 不可重复声明
++ 同样存在死区
 + **实质：变量指向的内存地址保存的数据不可改变**
++ 复合数据类型：对象/数组
+  ~~~
+  //常量foo储存的是一个地址，这个地址指向一个对象。不可变的只是这个地址，即不能把foo指向另一个地址，但对象本身是可变的，所以依然可以为其添加新属性，同理数组
+  const foo = {};
 
-### ES6 声明变量的6种方式
+  // 为 foo 添加一个属性，可以成功
+  foo.prop = 123;
+  foo.prop // 123
+
+  // 将 foo 指向另一个对象，就会报错
+  foo = {}; // TypeError: "foo" is read-only
+  ~~~
+
+#### ES6 声明变量的6种方式
 + var
 + function
 + let 
 + const
 + import
 + class
+
+#### 顶层对象window
++ var function声明的全局变量，依旧是顶层对象的属性；
++ let、const、class声明的全局变量，不属于顶层对象的属性。
+~~~
+var a = 1;
+// 如果在 Node 的 REPL 环境，可以写成 global.a
+// 或者采用通用方法，写成 this.a
+window.a // 1
+
+let b = 1;
+window.b // undefined
+~~~
+#### global 对象
+
 
 ### 变量的解构赋值  
 1. 数组
