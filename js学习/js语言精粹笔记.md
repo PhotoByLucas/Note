@@ -1,5 +1,3 @@
-### js数据类型 ###
-number string bool null undefined object fuction
 
 ### 对象
 语句更新对象中的属性
@@ -14,3 +12,13 @@ number string bool null undefined object fuction
 ### 数组
 map方法
 filter 方法
+# 2. 语法
++ NaN是一个数值 表示一个不能产生正常结果的运算值 **不等于任何值** 可以用 isNaN(number)俩检测
+# 3. 对象
++ js数据类型 
+  + number 
+  + string 
+  + bool 
+  + null 
+  + undefined 
+  + object 其他的都是对象
