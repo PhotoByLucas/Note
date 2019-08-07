@@ -10,7 +10,6 @@
     // toString 是原型对象上的属性
     toString() {
       console.log('name:' + this.name + ',color:' + this.color);
-
     }
   }
 
