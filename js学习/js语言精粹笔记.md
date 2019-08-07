@@ -1,6 +1,15 @@
 ### 数组
-map方法
-filter 方法
++ map()
+  ~~~
+    const users=res.items.map(item => ({
+      url: item.html_url,      
+      img: item.avatar_url,      
+      name: item.login,
+      })
+    );
+    //关注点 箭头函数的简写
+  ~~~
++ filter 方法
 # 2. 语法
 + NaN是一个数值 表示一个不能产生正常结果的运算值 **不等于任何值** 可以用 isNaN(number)俩检测
 # 3. 对象
