@@ -10,7 +10,6 @@
     // toString 是原型对象上的属性
     toString() {
       console.log('name:' + this.name + ',color:' + this.color);
-
     }
   }
 
@@ -56,9 +55,32 @@
 + ## import
 # 3. 箭头函数
 + 箭头函数与包围它的代码共享同一个this
-+ =>之前是一个空括号、单个的参数名、或用括号括起的多个参数名
-+ =>之后可以是一个表达式（作为函数的返回值），或者是用花括号括起的函数体（需要自行通过return来返回值，否则返回的是undefined）。
++ =>之前
+  + 一个空括号
+  + 单个的参数名
+  + 用括号括起的多个参数名
++ =>之后
+  + 一个表达式（作为函数的返回值）
+  + 用花括号括起的函数体（需要自行通过return来返回值，否则返回的是undefined）。
+  ~~~
+  const fun1 = ()=>1+2 //执行后结果 3
+  const fun2 = () => {1+2} //执行后结果 undefined
+  const fun3 = () => {return 1+2 } // 执行后结果 3
+
+  //总结：如果箭头后有{ }，则{}内有return 则返回return后的值，没有 则返回undefined
+  ~~~
+
+  ~~~
+  //在返回一个对象的时候需要用
+  items.map(item => ({
+        url: item.html_url,      
+        img: item.avatar_url,      
+        name: item.login,
+        })
+      );
+  ~~~
 + 卸载监听？
+
 
 # 4. 函数参数默认值
   ~~~
