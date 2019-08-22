@@ -1,5 +1,4 @@
 + __dirname
-+ @/
 + asset 和 static的区别
     + https://www.jb51.net/article/142230.htm
     + https://www.jb51.net/article/140152.htm
@@ -21,4 +20,4 @@
             ~~~
             <div :style="`height:${fixedItemHeight}px`"></div>
             ~~~
-
++ 移动端转场特效 vueg
