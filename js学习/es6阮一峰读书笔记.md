@@ -238,5 +238,26 @@ promise.then(function(value) {
 }, function(error) {
   // failure
 });
-//then方法可以接受两个回调函数作为参数。第一个回调函数是Promise对象的状态变为resolved时调用，第二个回调函数是Promise对象的状态变为rejected时调用。
 ~~~
++ then方法可以接受两个回调函数作为参数。
++ 第一个回调函数是Promise对象的状态变为resolved时调用，
++ 第二个回调函数是Promise对象的状态变为rejected时调用。
+3. 执行顺序
+~~~
+let promise = new Promise(function(resolve, reject) {
+  console.log('Promise');
+  resolve();
+});
+
+promise.then(function() {
+  console.log('resolved.');
+});
+
+console.log('Hi!');
+
+// Promise
+// Hi!
+// resolved
+~~~
++ Promise 新建后立即执行，所以首先输出的是Promise。
++ 然后，then方法指定的回调函数，将在当前脚本所有同步任务执行完才会执行，所以resolved最后输出。
