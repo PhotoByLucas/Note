@@ -21,3 +21,4 @@
             <div :style="`height:${fixedItemHeight}px`"></div>
             ~~~
 + 移动端转场特效 vueg
++ require 和import的区别
