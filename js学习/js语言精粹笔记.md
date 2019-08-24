@@ -1,4 +1,6 @@
 ### 数组
++ forEach()
+  + return 值为undefined
 + map()
   ~~~
     const users=res.items.map(item => ({
@@ -7,7 +9,7 @@
       name: item.login,
       })
     );
-    //关注点 箭头函数的简写
+    //关注点 箭头函数的简写 箭头函数在返回对象时候需用()包括起来
   ~~~
 + filter 方法
 # 2. 语法
