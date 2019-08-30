@@ -222,7 +222,7 @@ add(2, 5, 3) // 10
 1. 只有pending fulfilled rejected三种状态
 ~~~
 const promise = new Promise(function(resolve, reject) {
-  // ... some code
+  //  some code
 
   if (/* 异步操作成功 */){
     resolve(value);
