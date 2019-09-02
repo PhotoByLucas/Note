@@ -4,7 +4,7 @@
 //当 eventName 的值为 "focus" 时，v-on:[eventName] 将等价于 v-on:focus。
 ~~~
 
-#### computed
+# computed 与 watch
 computed属性中的返回值会根据他们的**依赖**的改变相应的进行重新求值  
 使用computed会将上一次的计算结果**存入缓存** 在依赖改变前都不会发生改变  
 相对于method可以节省调用时的 **每一次的重新计算**
@@ -26,8 +26,23 @@ computed: {
 //现在再运行 vm.fullName = 'John Doe' 时，setter 会被调用，vm.firstName 和 vm.lastName 也会相应地被更新。
 ~~~
 
-#### 将class与style动态绑定
-#### v-if和v-show 
+# 将class与style动态绑定
+~~~
+<div
+  class="static"
+  v-bind:class="{ active: isActive, 'text-danger': hasError }"
+></div>
+
+data: {
+  isActive: true,
+  hasError: false
+}
+
+//绑定结果
+<div class="static active"></div>
+~~~
+
+# v-if和v-show 
 show会一直保留在DOM元素中 但是if不显示时就不存在DOM中   
 
 #### 事件修饰符
