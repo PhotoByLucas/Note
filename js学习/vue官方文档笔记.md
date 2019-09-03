@@ -45,6 +45,7 @@ data: {
 # v-if和v-show 
 show会一直保留在DOM元素中 但是if不显示时就不存在DOM中   
 
+# 事件处理
 #### 事件修饰符
 + .stop 阻止单击事件继续传
 + .prevent 
