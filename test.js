@@ -1,18 +1,6 @@
-let koa=require('koa')
-let app= new koa()
-
-let mid = function (){
-	return function* (next){
-		this.body='mark'
-		yield next
-		this.body+=' done'
-	}
+function a() {
+	console.log(arguments)
+	console.log(arguments.length)
 }
-app.use(mid)
 
-app.use(function* (next){
-	this.body+=' saved'
-	yield next
-})
-
-app.listen(3000)
+a(1,32,3,3,3)

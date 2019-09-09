@@ -22,3 +22,14 @@
             ~~~
 + 移动端转场特效 vueg
 + require 和import的区别
++ 生命周期 
+~~~
+//这样子会显示键值undefined 但是放在mounted初始化就好了
+  computed: {
+      xx:()=>{
+          return config.columns[this.$route.xxx]
+      }
+  },
+~~~
++ computed 中使用箭头函数无法正常计算
++ object.keys
