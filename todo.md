@@ -33,3 +33,7 @@
 ~~~
 + computed 中使用箭头函数无法正常计算
 + object.keys
++  vue-router的history和hash模式todo
++ vue如何实现对象和数组的监听
++ 虚拟dom
++ export default 和 export 的区别 [变量引用函数](http://es6.ruanyifeng.com/?search=export&x=0&y=0#docs/module)
