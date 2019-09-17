@@ -4,3 +4,5 @@ function a() {
 }
 
 a(1,32,3,3,3)
+console.log(b)
+var b =20
