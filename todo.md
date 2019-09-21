@@ -37,3 +37,8 @@
 + vue如何实现对象和数组的监听
 + 虚拟dom
 + export default 和 export 的区别 [变量引用函数](http://es6.ruanyifeng.com/?search=export&x=0&y=0#docs/module)
+
+1. 来自哪里
+2. 对华工有什么印象
+3. 有什么想对即将开始大学生涯的自己说的
+4. 对新的四年有什么期待呢
