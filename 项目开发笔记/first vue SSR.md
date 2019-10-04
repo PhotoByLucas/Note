@@ -30,3 +30,4 @@ __dirname 总是指向被执行 js 文件的绝对路径,也就是说你在E:\we
 
 + babel是一个js编译器,可以把先进的js版本向下编译
 	> https://www.jianshu.com/p/a4c5524799d0
++ 27p

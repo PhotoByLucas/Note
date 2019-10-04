@@ -39,3 +39,4 @@
 + export default 和 export 的区别 [变量引用函数](http://es6.ruanyifeng.com/?search=export&x=0&y=0#docs/module)
 
 + nextTick
++ 弄清楚 配置win环境变量到底是在干什么

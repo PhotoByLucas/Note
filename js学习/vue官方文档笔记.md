@@ -147,3 +147,26 @@ createElement(
   ]
 )
 ~~~
+
+# 深入响应式原理
+### 检验变化时注意事项
++ Vue 不能检测到对象属性的**添加**或**删除**。
+  ~~~
+  var vm = new Vue({
+    data:{
+      a:1
+    }
+  })
+
+  // `vm.a` 是响应的
+
+  vm.b = 2
+  // `vm.b` 是非响应的
+  ~~~
+  可以使用
+  ~~~
+  Vue.set(vm.someObject, 'b', 2)
+  或
+  this.$set(this.someObject,'b',2)
+  ~~~
+### 异步更新队列
