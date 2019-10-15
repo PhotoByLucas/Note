@@ -1,19 +1,28 @@
-// demo2
-function test() {
-	console.log(foo); //foo(){...}
-	console.log(bar); //undefined
+setTimeout(function() {
+	console.log(a);
+}, 0);
 
-	var foo = 'Hello';
-	console.log(foo); //'Hello'
-	var bar = function () {
-			return 'world';
-	}
-	
-	console.log(bar); //bar(){...}
+var a = 10;
 
-	function foo() {
-			return 'hello';
-	}
+console.log(b);
+console.log(fn);
+
+var b = 20;
+
+function fn() {
+	setTimeout(function() {
+			console.log('setTImeout 10ms.');
+	}, 10);
 }
 
-test();
+fn.toString = function() {
+	return 30;
+}
+
+console.log(fn);
+
+setTimeout(function() {
+	console.log('setTimeout 20ms.');
+}, 20);
+
+fn();
