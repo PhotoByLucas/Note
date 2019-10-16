@@ -1,28 +1,16 @@
-setTimeout(function() {
-	console.log(a);
-}, 0);
+// 'use strict';
+var a = 20;
+function foo () {
+    var a = 1;
+    var obj = {
+        a: 10,
+        c: this.a + 20,
+        fn: function () {
+            return this.a;
+        }
+    }
+    return obj.c;
 
-var a = 10;
-
-console.log(b);
-console.log(fn);
-
-var b = 20;
-
-function fn() {
-	setTimeout(function() {
-			console.log('setTImeout 10ms.');
-	}, 10);
 }
-
-fn.toString = function() {
-	return 30;
-}
-
-console.log(fn);
-
-setTimeout(function() {
-	console.log('setTimeout 20ms.');
-}, 20);
-
-fn();
+console.log(foo());    // ？
+// console.log(window.foo());  // ?
