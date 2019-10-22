@@ -1,4 +1,4 @@
-本文链接 https://juejin.im/post/5ca2e1935188254416288eb2#heading-54
+[本文链接](https://juejin.im/post/5ca2e1935188254416288eb2#heading-54)
 # 1. 类
 ~~~
   class Animal {
