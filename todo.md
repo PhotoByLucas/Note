@@ -40,3 +40,6 @@
 
 + nextTick
 + 弄清楚 配置win环境变量到底是在干什么
++ 阅读
+    + https://zhuanlan.zhihu.com/p/25407758
+    + https://juejin.im/post/58cf180b0ce4630057d6727c
