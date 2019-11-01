@@ -96,5 +96,20 @@ React-Redux 将所有组件分成两大类：UI 组件（presentational componen
     + 负责管理数据和业务逻辑，不负责 UI 的呈现
     + 带有内部状态
     + 使用 Redux 的 API
-3. connect
+3. connect() 用于从 UI 组件生成容器组件
+    ~~~
+    import { connect } from 'react-redux'
+
+    const VisibleTodoList = connect(
+      mapStateToProps,
+      mapDispatchToProps
+    )(TodoList)
+    ~~~
+4. mapStateToProps()
+5. mapDispatchToProps()
 ## dvaJS
+## es7装饰器
+@connect
++ @form.create  
+经 Form.create() 包装过的组件会自带 this.props.form 属性
+
