@@ -32,8 +32,13 @@
     + https://zhuanlan.zhihu.com/p/25407758
     + https://juejin.im/post/58cf180b0ce4630057d6727c
 + yarn global dir
-    + 任我如何修改基本都雷打不动不知道如何解决
+    + 任我如何修改基本都雷打不动不知道如何解s
 
+## 浩鲸
++ dispatch后处理的reducer在哪
+    + 通过type找到model再找到effect再去service中拿到数据
+    + 会有一个顶层的store？
+    + mock如何使用
 + connect 
 + 这个recycleBin是不是在model里声明就可以用
 ~~~
