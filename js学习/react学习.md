@@ -108,6 +108,52 @@ React-Redux 将所有组件分成两大类：UI 组件（presentational componen
 4. mapStateToProps()
 5. mapDispatchToProps()
 ## dvaJS
+1. 核心概念
++ State：一个对象，保存整个应用状态
++ View：React 组件构成的视图层
++ Action：一个对象，描述事件
+  ~~~
+  {
+    type: 'click-submit-button',
+    payload: this.form.data
+  }
+  ~~~
++ connect 方法：一个函数，绑定 State 到 View  
+  connect 方法传入的第一个参数是 mapStateToProps 函数，mapStateToProps 函数会返回一个对象，用于建立 State 到 Props 的映射关系。
++ dispatch 方法：一个函数，发送 Action 到 State
+  ~~~
+  dispatch({
+    type: 'click-submit-button',
+    payload: this.form.data
+  })
+  ~~~
+  被 connect 的 Component 会自动在 props 中拥有 dispatch 方法。 
+
+> connect的数据来源 model
+2. model层 
+    ~~~
+    {
+      namespace: 'count',
+      state: 0,
+      reducers: {
+        add(state) { return state + 1 },
+      },
+      effects: {
+        *addAfter1Second(action, { call, put }) {
+          yield call(delay, 1000);
+          yield put({ type: 'add' }); //调用名为'add'的reducer
+        },
+      },
+    }
+    ~~~
++ namespace: 当前 Model 的名称。整个应用的 State，由多个小的 Model 的 State 以 namespace 为 key 合成
++ state: 该 Model 当前的状态。数据保存在这里，直接决定了视图层的输出
++ reducers: Action 处理器，处理同步动作，用来算出最新的 State，**state的计算器**，从上一个 State 算出当前 State。
++ effects：Action 处理器，处理异步动作  
+  + Effect 是一个 Generator 函数，内部使用 yield 关键字，标识每一步的操作（不管是异步或同步）。  
+  + dva 提供多个 effect 函数内部的处理函数，比较常用的是 call 和 put。
+    + call：执行异步函数
+    + put：发出一个 Action，类似于 dispatch
 ## es7装饰器
 @connect
 + @form.create  
