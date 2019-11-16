@@ -51,7 +51,7 @@
     store.dispatch(addTodo('Learn Redux'));
     ~~~
 6. reducer  
-> Store 收到 Action 以后，必须给出一个新的 State，这样 View 才会发生变化。这种 State 的计算过程就叫做 Reducer。
+    > Store 收到 Action 以后，必须给出一个新的 State，这样 View 才会发生变化。这种 State 的计算过程就叫做 Reducer。  
     ~~~
     const defaultState = 0;
     const reducer = (state = defaultState, action) => {
@@ -66,8 +66,9 @@
     const state = reducer(1, {
       type: 'ADD',
       payload: 2
-    });
-    ~~~
+    });  
+    ~~~  
+
 7. 纯函数  
 Reducer 函数里面不能改变 State，必须返回一个全新的对象
 8. store.subscribe()
