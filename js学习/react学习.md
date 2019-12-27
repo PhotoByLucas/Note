@@ -32,7 +32,8 @@
     ```
 
 4.  action creator
-    ~~~
+
+    ```
     const ADD_TODO = '添加 TODO';
 
         function addTodo(text) {
@@ -46,6 +47,8 @@
         ~~~
 
     > 可以这样理解，Action 描述当前发生的事情。改变 State 的唯一办法，就是使用 Action。它会运送数据到 Store。
+
+    ```
 
 5.  dispatch
 
@@ -189,3 +192,103 @@ React-Redux 将所有组件分成两大类：UI 组件（presentational componen
 
 - @form.create  
   经 Form.create() 包装过的组件会自带 this.props.form 属性
+
+## react hook
+
+1. useState() 状态钩子
+
+   ```
+   import React, { useState } from "react";
+
+   export default function  Button()  {
+     const  [buttonText, setButtonText] =  useState("Click me,   please");
+
+     function handleClick()  {
+       return setButtonText("Thanks, been clicked!");
+     }
+
+     return  <button  onClick={handleClick}>{buttonText}</button>;
+   }
+   ```
+
+   useState()这个函数接受状态的初始值，作为参数，上例的初始值为按钮的文字。该函数返回一个数组，数组的第一个成员是一个变量（上例是 buttonText），指向状态的当前值。第二个成员是一个函数，用来更新状态，约定是 set 前缀加上状态的变量名（上例是 setButtonText）。
+
+2. useContext() 共享状态钩子 -> 类似于给两个组件外部包起来的一个父组件
+
+   ```
+   const AppContext = React.createContext({});
+
+   const Navbar = () => {
+     const { username } = useContext(AppContext)
+     return ( // ...)
+   }
+
+   const Messages = () => {
+     const { username } = useContext(AppContext)
+     return ( //...)
+   }
+
+   function App() {
+     return (
+       <AppContext.Provider value={{
+         username: 'superawesome'
+       }}>
+         <div className="App">
+           <Navbar />
+           <Messages />
+         </div>
+       </AppContext.Provider>
+     );
+   }
+   ```
+
+3. useReducer() action 钩子
+   ```
+   const [state, dispatch] = useReducer(reducer, initialState);
+   ```
+4. useEffect() 副作用钩子
+   ```
+   useEffect(()  =>  { // Async Action }, [dependencies])
+   ```
+   useEffect()接受两个参数。第一个参数是一个函数，异步操作的代码放在里面。第二个参数是一个数组，用于给出 Effect 的依赖项，只要这个数组发生变化，useEffect()就会执行。第二个参数可以省略，这时每次组件渲染时，就会执行 useEffect()。
+5. 封装 hook
+
+   1. 定义一个 hook
+
+      ```
+      const usePerson = (personId) => {
+        const [loading, setLoading] = useState(true);
+        const [person, setPerson] = useState({});
+        useEffect(() => {
+          setLoading(true);
+          fetch(`https://swapi.co/api/people/${personId}/`)
+            .then(response => response.json())
+            .then(data => {
+              setPerson(data);
+              setLoading(false);
+            });
+        }, [personId]);
+        return [loading, person];
+      };
+      ```
+
+   2. 使用 hook
+
+      ```
+
+      const Person = ({ personId }) => {
+        const [loading, person] = usePerson(personId);
+
+        if (loading === true) {
+          return <p>Loading ...</p>;
+        }
+
+        return (
+          <div>
+            <p>You're viewing: {person.name}</p>
+            <p>Height: {person.height}</p>
+            <p>Mass: {person.mass}</p>
+          </div>
+        );
+      };
+      ```

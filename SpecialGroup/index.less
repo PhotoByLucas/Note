@@ -1,0 +1,230 @@
+// 特殊分群管理首页
+.specialListWrapper {
+  :global {
+    .ant-table-thead > tr > th {
+      padding: 0 16px;
+      height: 38px;
+    }
+    .ant-table-tbody > tr > td {
+      padding: 0 16px;
+      max-height: 38px;
+      height: 38px;
+    }
+    .ant-card-bordered {
+      border-top: none;
+      border-bottom: none;
+    }
+    .ant-table-expanded-row {
+      background-color: #fff !important;
+    }
+    .ant-table-expanded-row > td {
+      padding: 0px 0px !important;
+    }
+    .ant-card-body {
+      .ant-pagination {
+        margin-top: 12px;
+      }
+    }
+  }
+  .advancedWrapper {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    .advancedText {
+      margin-left: 20px;
+    }
+    .advancedSearch {
+      width: 224px;
+      height: 24px;
+    }
+  }
+}
+
+// 特殊分群子分群列表
+.expandedChildWrapper {
+  margin-bottom: 16px;
+  :global {
+    .ant-table-expanded-row > td {
+      padding: 0 0;
+    }
+    .ant-card-head {
+      display: flex;
+      align-items: center;
+      height: 48px;
+      padding: 0 16px;
+      .ant-card-head-wrapper {
+        width: 100%;
+        height: 48px;
+      }
+      .ant-card-head-title {
+        font-size: 14px;
+      }
+      .ant-card-extra {
+        display: flex;
+        flex: 1;
+        justify-content: flex-end;
+        button {
+          margin-right: 8px;
+        }
+      }
+    }
+    .ant-card-head-title {
+      height: 48px;
+    }
+    .ant-card-body {
+      padding: 0;
+      border-bottom: 1px solid #e8e8e8;
+      .ant-table-wrapper {
+        border-bottom: 1px solid #e8e8e8;
+      }
+    }
+    .ant-table-thead > tr {
+      height: 44px;
+    }
+    .ant-table-thead > tr > th {
+      background-color: #fff;
+    }
+
+    .ant-pagination {
+      height: 42px;
+      display: flex;
+      align-items: center;
+      margin: 0 0;
+      margin-top: 0 !important;
+    }
+  }
+}
+
+// 选择号码弹窗
+.numWrapper {
+  :global {
+    .ant-modal-content {
+      .ant-modal-header {
+        height: 48px;
+        display: flex;
+        align-items: center;
+      }
+      .ant-modal-close-x {
+        height: 48px;
+        line-height: 48px;
+      }
+      .ant-modal-body {
+        padding: 0 16px;
+      }
+      // .ant-table-thead > tr > th{
+      //   height: 48px;
+      // }
+    }
+  }
+  .numHeader {
+    display: flex;
+    height: 56px;
+    align-items: center;
+    .numHeaderInput {
+      width: 240px;
+      height: 24px;
+      margin-right: 8px;
+    }
+    .numHeaderSearch,
+    .numHeaderRestore {
+      width: 56px;
+      height: 24px;
+      font-size: 12px;
+    }
+    .numHeaderSearch {
+      margin-right: 8px;
+    }
+  }
+}
+
+// 分群信息弹窗
+.groupDetailWrapper {
+  width: 1080px !important;
+  height: 502px !important;
+  :global {
+    .ant-modal-header {
+      display: flex;
+      align-items: center;
+      height: 48px;
+    }
+    .ant-form-item {
+      margin-bottom: 18px;
+    }
+    .ant-col-6 {
+      border: 1px solid #eaecee;
+    }
+    .tagHide {
+      display: none;
+    }
+    .tagLeftActive::before {
+      content: '';
+      border: 1px dashed #ddd;
+      margin-right: 16px;
+      padding: 8px;
+      display: inline-block;
+      height: 42px;
+      vertical-align: top;
+      background: #f2f2f2;
+    }
+    .tagRightActive::after {
+      content: '';
+      border: 1px dashed #ddd;
+      margin-left: 16px;
+      padding: 8px;
+      display: inline-block;
+      height: 42px;
+      vertical-align: top;
+      background: #f2f2f2;
+    }
+    .ant-modal-body {
+      padding: 10px 16px;
+      .ant-col-5 p {
+        border: 1px solid #eaecee;
+      }
+    }
+  }
+}
+
+// 文件导入
+.importModal {
+  font-size: 16px;
+  :global {
+    .ant-modal-body {
+      .ant-radio-group {
+        margin-top: 10px;
+      }
+    }
+  }
+  .uploadWrapper {
+    margin-bottom: 10px;
+  }
+  .warn {
+    color: red;
+  }
+}
+.importText {
+  font-size: 16px;
+  .warn {
+    color: red;
+  }
+  .downTypes {
+    .ligntColor {
+      padding: 0 8px;
+      border-right: 1px solid #ccc;
+    }
+    a:last-child {
+      border-right: none;
+    }
+    .xls {
+      margin-left: 10px;
+    }
+  }
+}
+
+.memberOprBtnGroup {
+  display: flex;
+  margin: 8px 0 8px 32px;
+  button {
+    margin-right: 8px;
+  }
+}

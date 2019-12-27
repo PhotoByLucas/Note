@@ -1,0 +1,100 @@
+@import '~antd/es/style/themes/default.less';
+// 新增分群拖拽
+// 左侧目录树
+.dragLeftWrapper {
+  height: 396px;
+  padding: 5px;
+  border: 1px solid #eaecee;
+  border-top: none;
+}
+// 右侧标签列表
+.rightLabel {
+  display: flex;
+  flex-direction: column;
+  height: 396px;
+}
+.outputWrapper {
+  flex: 1;
+  .outputSelect {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    .condition{
+      margin-top: 12px;
+      padding-left: 12px;
+      box-sizing: border-box;
+    }
+  }
+}
+.title {
+  border-bottom: 1px solid #eaecee;
+  line-height: 38px;
+  padding-left: 16px;
+  margin-bottom: 0;
+}
+.label {
+  background-color: #e9ecf3;
+}
+
+// 右侧拖拽标签
+.tagWrapper {
+  height: 100%;
+  overflow: auto;
+  border-top: 1px solid #eaecee;
+  margin-top: 12px;
+  > div {
+    margin: 8px;
+    display: inline-block;
+    vertical-align: top;
+  }
+  .tagBox {
+    border: 1px dashed #ececec;
+    padding: 0 8px;
+    display: inline-block;
+    height: 42px;
+    position: relative;
+    :global {
+      .ant-tag {
+        margin: 9px 0 0 0;
+      }
+      .ant-form-item {
+        width: 100px;
+        margin-bottom: 0;
+      }
+      .anticon-close-circle {
+        display: none;
+        position: absolute;
+        color: @error-color;
+        top: -6px;
+        right: -7px;
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+      .ant-form-explain {
+        font-size: 12px;
+        margin-top: 0px;
+      }
+      .ant-select-disabled .ant-select-selection {
+        background-color: #fff;
+        color: rgba(0, 0, 0, 0.45);
+      }
+      .ant-input[disabled] {
+        background-color: #fff;
+        color: rgba(0, 0, 0, 0.45);
+      }
+    }
+    &:hover {
+      :global(.anticon-close-circle) {
+        display: inline;
+      }
+    }
+    .tagItem {
+      display: inline-block;
+      vertical-align: top;
+      + .tagItem {
+        margin-left: 8px;
+      }
+    }
+  }
+}
