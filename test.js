@@ -1,21 +1,20 @@
-let input =  [7,6,4,2,3]
-let tag1 = input[0]//买入
-let tag2 = input[1]
-for(let i =0;i<input.length-1;i++){
-    //得到买入时最小的价
-    if(tag1>input[i]){
-        tag1=input[i]
-        tag2=input[i+1]
-    }
-    
-    
-    for(let j = i+1;j<input.length;j++){
-        //检验出买入后的中 最大的
-        if(tag2<input[j]){
-            tag2=input[j]
-        }
-    }
-}
+function Num1(n) {
+  var count = 0;
 
-console.log(tag1,tag2)
-console.log(tag2>tag1?tag2-tag1:0)
+  // 加入一个flag属性，作为验证该数的某一位是否为1的依据
+  // 二进制为  00000001
+  var flag = 1;
+  while (flag) {
+    if (n & flag) {
+      count++;
+    }
+
+    flag = flag << 1;
+    // 会变为
+    // 0000010
+    // 0000100
+    // 0001000
+    // 知道超出32位
+  }
+  return count;
+}

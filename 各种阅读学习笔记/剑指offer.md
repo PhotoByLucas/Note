@@ -53,32 +53,88 @@
          - 反之，若 tempNum<= P1，则说明 tempNum 处于后段数组中，移动 P2 至 tempNum
       3. 继续执行知道 P1、P2 两个指针相邻
 
-9) 斐波那契数列
+9.  斐波那契数列
 
-   ```
-       f(n) = f(n-1)+f(n-2)         (n>1)
-           = 1                     (n=1)
-           = 0                     (n=0)
-   ```
+    ```
+        f(n) = f(n-1)+f(n-2)         (n>1)
+            = 1                     (n=1)
+            = 0                     (n=0)
+    ```
 
-   - 递归方法
+    - 递归方法
 
-   - O(n)解法
+    - O(n)解法
+
+      ```
+      function fbnc(n){
+          if( n===1) return 0
+          if (n===2) return 1
+
+          if (n>2) {
+              var num1=1 // 下一次循环中的较大数
+              var num2=0 // 下一次循环中的较小数
+              var fbncN=0
+              for (let index = 2; index < n; index++) {
+                  fbncN=num1+num2
+                  num2=num1
+                  num1=fbncN
+              }
+              return fbncN
+          }
+      }
+      ```
+
+10. 二进制中的 1 个数
+    - 位运算
+      - &与
+      - |或
+      - ^异或
+      - n = n >> 1 右移
+
+
+    - 题目
+
+      给定一个数字，给出对应二进制中 1 的个数
+
+    - 错误解法：位运算右移，但是会遇到负数陷入死循环
+
+    - 正确解法
         ~~~
-        function fbnc(n){
-            if( n===1) return 0
-            if (n===2) return 1
+        function Num1(n) {
+        var count = 0;
 
-            if (n>2) {
-                var num1=1 // 下一次循环中的较大数
-                var num2=0 // 下一次循环中的较小数
-                var fbncN=0
-                for (let index = 2; index < n; index++) {
-                    fbncN=num1+num2
-                    num2=num1 
-                    num1=fbncN 
-                }
-                return fbncN
+        // 加入一个flag属性，作为验证该数的某一位是否为1的依据
+        // 二进制为  00000001
+        var flag = 1;
+        while (flag) {
+            if (n & flag) {
+            count++;
             }
-        }    
+
+            flag = flag << 1;
+            // 会变为
+            // 0000010
+            // 0000100
+            // 0001000
+            // 知道超出32位
+        }
+        return count;
+        }
+
+        ~~~
+
+    - 有x个1就O(x)的解法
+
+        ~~~
+        function Num1(n){
+            var count=0
+            while(n){
+                count++
+
+                // 1. 减法会使位运算中的数字中少去一个1
+                // 2. 少去一个1的n与原来的n做且运算，前面有1的都会保留，不同的部分不回保留
+                n=n & n-1
+            }
+            return count
+        }
         ~~~
