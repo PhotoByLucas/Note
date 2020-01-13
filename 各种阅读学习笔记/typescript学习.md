@@ -62,28 +62,156 @@
       - number 均为浮点数
       - boolean true/false
       - string
-      - 
+      - symbol
+      - void
+
+          当一个函数没有返回值时，你可以显式指定返回值为 void；如果不显式指定，会被自动推导为 Void类型
+          ~~~
+          // 显式指定返回类型为 void
+          function hi(): void { /**函数体为空**/ }
+          // 和上面等价，返回值会被自动推导为 void
+          function hi() { /**函数体为空**/ }
+          ~~~
+      - null和undefined
+
+          Null类型和Undefined类型的类型表现和编译选项 strictNullChecks 有关
+          - strictNullChecks 选项打开
+              - null 只能赋值给 Null类型
+              - undefined 只能赋值给 Undefined类型 和 Void类型
+          - strictNullChecks 选项关闭，null 和 undefined 可以赋值给任意类型
+
+      - never
+      - any 
+
+          显式指定为any 或 未指定初始化类型和初始值，都会被认为是any
    4. 数组类型
+
+      1. 数组类型
+          ~~~
+          T[]
+          // 其中 T 可以是任何类型，代表的是数组的元素类型
+
+          let list: number[] = [1, 2, 3];
+          // 二维数组
+          let vec: number[][] = [[1, 2, 3], [1, 2, 3]];
+          ~~~
+      2. 元组类型
+
+          元组和数组类似，只不过元组是一种固定长度的数组，每个元素有自己的类型。语法为：
+          ~~~
+          [T0, T1, ...]
+          // T0, T1代表任意类型，省略号表示可以有任意多个元素。
+
+          let x: [string, number];
+
+          x=['hello',10]
+          ~~~
+
    5. 函数类型
+      ~~~
+      // 将类型兼容的函数赋值给fn
+      fn = function(x: number, y: number): number {
+        return x + y;
+      }
+      ~~~
    6. 枚举类型
+      ~~~
+      enum Direction {
+          Up = 2,
+          Down,
+          Left = 3.3
+          Right
+        }
+
+        // 可得出
+        Direction.Up === 2;       // 显式初始化
+        Direction.Down === 3;     // 2 + 1 = 4.3
+        Direction.Left === 3.3;   // 显式初始化
+        Direction.Right === 4.3;  // 3.3 + 1 = 4.3
+
+        // 声明d为枚举类型Direction
+        let d: Direction;
+      ~~~
    7. 复合类型
+      1. 交叉类型 且
+          ~~~
+          interface Bird {
+            fly(): void;
+          }
+          interface Dog {
+            run(): void;
+          } 
+
+          // 同时具有Bird的fly和Dog的run特征
+          class Animal {
+            fly(){}
+            run(){}
+          }
+
+          // 正确
+          let animal: Bird & Dog = new Animal();
+          ~~~
+      2. 联合类型 或
+          ~~~
+          // 与 Bird 兼容
+          class Animal1 {
+            fly(){}
+          }
+          // 与 Dog 兼容
+          class Animal2 {
+            run(){}
+          }
+
+          // 正确，满足了Bird
+          let animal1: Bird | Dog = new Animal1();
+          // 正确，满足了Dog
+          let animal2: Bird | Dog = new Animal2();
+          ~~~
+      3. 混合联合
+          ~~~
+          // 值与类型混搭  也可以值和值 类型和类型
+          let u: 99 | string | boolean;
+          u = 'a';
+          u = 99;
+          u = true;
+          ~~~
+      4. keyof关键字
+          ~~~
+          interface Person {
+            name: string;
+            age: number;
+          }
+
+          // 通过keyof关键字声明联合
+          let keyWord: keyof Person;
+          // 完全等价于
+          let keyWord: "name" | "age";
+
+          keyWord = "name";
+          keyWord = "age";
+          ~~~
    8. 接口类型
+   
    9. 类类型
 
 2. 泛型
    1. 泛型语法
    2. 泛型约束
    3. 泛型数组
+
 3. 类型转换
    1. 类型别名
    2. 类型断言
+
 4. 模块
    commonJS 兼容模块
+
 5. 命名空间
    1. 命名空间
    2. 空间拆分
    3. 空间嵌套
    4. 空间别名
+
 6. 理解声明
    1. 为什么需要声明
    2. 内部声明
