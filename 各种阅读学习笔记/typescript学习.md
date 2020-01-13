@@ -331,7 +331,8 @@
          ```
 
    9. 类类型
-      ~~~
+
+      ```
       // 定义类
       class TypeA { // ... }
 
@@ -339,35 +340,200 @@
       let a: TypeA;
       // 赋值TypeA类型
       a = new TypeA();
-      ~~~
-      对es6的语法扩展
+      ```
+
+      对 es6 的语法扩展
+
       1. 实例属性和静态属性能直接定义在类内部
       2. public/private/protected
-      3. readonly属性必须在声明时或构造函数里被初始化
+      3. readonly 属性必须在声明时或构造函数里被初始化
       4. 抽象类和抽象方法
+
 2. 泛型
 
    1. 泛型语法
-   2. 泛型约束
-   3. 泛型数组
+      ```
+      // 语法
+      名字<T1, T2, ...>
+      ```
 
-3. 类型转换
 
-   1. 类型别名
-   2. 类型断言
+      // 1. 泛型函数
+      function identity<T>(m: T): T {
+        // T 注解了函数内部的变量定义
+        let n: T = m;
+        return n;
+      }
+      let m: string = identity<string>('hello world');
 
-4. 模块
-   commonJS 兼容模块
 
-5. 命名空间
+      // 2. 泛型类
+      // 定义泛型类，包含两个类型变量
+      class Identity<T1, T2> {
+        attr1: T1;
+        attr2: T2;
+        show(m: T1, n: T2): T2{
+          return n;
+        }
+      }
+      let a: Identity<string, number>;
+      a = new Identity<string, number>();
 
-   1. 命名空间
-   2. 空间拆分
-   3. 空间嵌套
-   4. 空间别名
 
-6. 理解声明
-   1. 为什么需要声明
-   2. 内部声明
-   3. 外部声明
-   4. 三斜线指令和 d.ts 文件
+      // 3. 泛型接口
+      interface Identity<T> { attr: T; }
+      // 一个复杂点的例子
+      function fn(){};
+      let c: Identity<typeof fn> = {
+        attr(){}
+      }
+      ~~~
+
+2.  泛型约束
+
+
+    ```
+    // 定义泛型函数
+    function getLength<T>(arg: T): number {
+      // 错误，编译器不知道类型变量T是否包含属性length，默认为不存在
+      // error TS2339: Property 'length' does not exist on type 'T'
+      return arg.length;
+    }
+    ```
+
+    约束语法
+
+    ```
+    <类型变量 extends 类型>
+
+    interface WithLength { length: number; }
+    function getLength<T extends WithLength>(arg: T): number {
+      return arg.length;
+    }
+
+    // 泛型默认类型语法功能
+    interface MyType<T = string> { value: T; }
+
+    ```
+
+3.  泛型数组
+
+
+    ```
+    // 声明泛型数组
+    let arr: Array<number> = [1, 2, 3];
+    // 等同于
+    let arr: number[] = [1, 2, 3];
+
+    // 只读泛型数组
+    let arr: ReadonlyArray<number> = [1, 2, 3];
+
+    ```
+
+3.  类型转换
+
+    1.  类型别名
+
+    ```
+    type 别名 = 类型 ;
+    type Text = string | number | { text: string };
+    ```
+
+    2.  类型断言
+
+        用来明确告诉编译器一个值的类型，相当于类型转换
+
+        ```
+        // 1、尖括号语法
+        // 为了避免和 JSX 语法产生冲突，尖括号语法只能在 tsx 文件中使用
+        <类型表达式>值
+
+        // 2、as语法
+        值 as 类型表达式
+
+        let someValue: any = "this is a string";
+
+        // 1、尖括号语法
+        let strLength: number = (<string>someValue).length;
+        // 2、as语法
+        let strLength: number = (someValue as string).length;
+        ```
+
+4.  模块
+    commonJS 兼容模块
+
+5.  命名空间
+
+    1.  命名空间
+
+        ```
+        // 定义命名空间 ns
+        namespace ns {
+          export let a = 'hello world';
+          let b = 1;
+
+          // 正确，可以访问b，因为函数show和变量b在同一个命名空间之内
+          function show(){
+            console.log(b);
+          }
+        }
+
+        // 正确，a被export，可以在ns之外访问
+        let c: string = ns.a;
+
+        // 错误，b不允许在ns之外访问
+        // error TS2339: Property 'b' does not exist on type 'typeof ns'
+        let d: number = ns.b;
+        ```
+
+    2.  空间拆分
+
+        要想访问被拆分的命名空间成员，必须用 export 导出需要被其他块访问的成员：
+
+        ```
+        namespace ns {
+          export let a = 1;
+        }
+        namespace ns {
+          // 正确，a被export
+          let b = a + 1;
+        }
+        ```
+
+    3.  空间嵌套
+
+        ```
+        namespace A {
+          namespace B {
+            export let msg = 'hello world';
+          }
+        }
+
+        // 错误，子命名空间B没有被export
+        // 需改为export namespace B
+        // error TS2339: Property 'B' does not exist on type 'typeof A'
+        console.log(A.B.msg);
+        ```
+
+    4.  空间别名
+
+        ```
+        namespace A {
+          export namespace B {
+            export namespace C {
+              export let msg = 'hello world';
+            }
+          }
+        }
+
+        // 使用import别名
+        import N = A.B.C;
+        // 输出: hello world
+        console.log(N.msg);
+        ```
+
+6.  理解声明
+    1. 为什么需要声明
+    2. 内部声明
+    3. 外部声明
+    4. 三斜线指令和 d.ts 文件
