@@ -1,3 +1,5 @@
+// https://leetcode-cn.com/problems/trapping-rain-water/
+// 42. 接雨水
 var trap = function(height = []) {
   let water = 0;
   for (let i = 1; i < height.length; i++) {
@@ -25,9 +27,6 @@ var trap = function(height = []) {
     return a<b?a:b
   }
 
-
-  
-  
   console.log("water",water);
 };
 var a = [0,1,0,2,1];
