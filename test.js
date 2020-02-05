@@ -10,10 +10,7 @@ var largestRectangleArea = function(heights) {
     for (let width = 1; width <= heights.length; width++) {
       maxHeight = Math.min(maxHeight, heights[index+width-1]);
 
-      if (maxHeight * width > largest) {
-        largest = maxHeight * width;
-        console.log( index, width,maxHeight, largest);
-      }
+      largest=Math.max(largest,maxHeight*width)
     }
   }
 
