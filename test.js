@@ -1,25 +1,39 @@
-// 84. 柱状图中最大的矩形
-// https://leetcode-cn.com/problems/largest-rectangle-in-histogram/
-/**
- * @param {number[]} heights
- * @return {number}
- */
-var largestRectangleArea = function(heights) {
-  let largest = 0;
-  for (let index = 0; index < heights.length; index++) {
-    let maxHeight = Number.MAX_VALUE;
+let inputN = 4;
+let tag = 1;
+let myNumber = new Array();
+for (let i = 0; i < inputN + 1; i++) {
+  // 新建一个n+1长度的初始化为0的数组
+  myNumber.push(0);
+}
 
-    for (let j = index; j < heights.length; j++) {
-      // 通过记忆化将搜寻数组中的最短数存下来，从O(n3)=>O(n2)
-      maxHeight = Math.min(maxHeight, heights[j]);
-      largest=Math.max(largest,maxHeight*(j-index+1))
-    }
-    console.log(index,maxHeight)
+while (tag) {
+  print(tag);
+  increase(inputN);
+}
+
+// 增长函数 立刻执行
+// n 为+1的数组位
+function increase(n) {
+  // 最高一位为1时，说明已经超过n位
+  if (myNumber[0] !== 0) {
+    tag = false;
   }
 
-  return largest;
-};
+  myNumber[n] += 1;
+  if (myNumber[n] === 10) {
+    // 进位
+    if (myNumber[inputN-tag] === 0&&inputN-n+1===tag) {
+      tag += 1;
+    }
+    increase(n - 1);
+    myNumber[n] = 0;
+  }
+}
 
-let a = [2,1,5,6,2,3]
+function print(tag) {
+  if (myNumber[0] !== 0) return;
 
-console.log(largestRectangleArea(a));
+  let tempNum = myNumber.slice(inputN - tag + 1, inputN + 1);
+  // console.log(myNumber, tempNum, tag);
+  console.log(tempNum.join(""),tag);
+}

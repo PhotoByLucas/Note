@@ -138,3 +138,81 @@
             return count
         }
         ~~~
+
+11. 数值的整数次方
+
+    - 题目
+
+    ```
+    /**
+    * @param {number} base 基数
+    * @param {number} exponent 次方
+    * @return {number} result = base^exponent
+    */
+    function Power(base,exponent){
+
+    }
+    ```
+
+    - 坑点(边界问题)
+
+      存在正数次方、负数次方、0 次方
+    - O(n)
+
+      ```
+      for(let i=0;i<exponent;i++) {
+          result*=base
+      }
+      ~~
+      ```
+
+    - O(log n)
+
+      以 2 为例子，递归求 2^1,2^2,2^4,2^8...
+
+12. 打印1到最大的n位数
+    - 题目：输入3，则打印1,2,3,...999
+    - 坑点：n可能是超过位数的大数，应该使用字符串，在字符串上模拟加法
+    - 解法
+        ~~~
+        // 打印的位数
+        let tag =1
+        let myNumber=new Array()
+        for(let i=0;i<n+1;i++){
+            // 新建一个n+1长度的初始化为0的数组
+            myNumber.push(0)
+        }
+
+        while(tag){
+            print(tag)
+            increase(n)
+        }
+        
+        // 增长函数 立刻执行
+        // n 为+1的数组位
+        function increase(n){
+            // 最高一位为1时，说明已经超过n位
+            if(myNumber[0]!==0){tag=false} 
+
+            myNumber[n]+=1
+            if(myNumber[n]===10){
+                // 进位
+                increase(n-1)
+                myNumber[n]=0
+            }
+        }
+
+        function print(tag){
+            let tempNum=myNumber.slice[n-tag+1,n]
+            console.log(tempNum.join())
+        }
+
+        ~~~
+12. O(1)删除链表节点
+    - 题目：给定一个节点和一个链表，要求从链表中删除该节点
+    - 注意：链表是否只有一个节点，即要将链表头指向空
+    - 解法：
+        - 遍历一遍后找到要删除的节点，按照常规方法删除 O(n)
+        - O(1) 解法
+            1. 直接将要删除的节点的下一个节点复制到要删除的节点中
+            2. 移去下一个节点
