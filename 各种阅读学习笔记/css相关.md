@@ -47,6 +47,9 @@
         - left 若无margin-left，则left的左边应与middle右边紧贴（但由于宽度不足被挤到下一行），声明后变为left的左边与middle左边重叠
         - right 仅需声明一个足以容纳right的负边距即可
     4. 添加相对定位，使得left和right相对于与middle边紧贴发生位移
+    5. 给container加上overflow:hidden，否则会导致下面写的文字环绕在红色色块右边（形成BFC撑开高度）
+
+    
 <html>
 
 <head>
@@ -57,11 +60,12 @@ body {
 .container {
     padding-left: 210px;
     padding-right: 190px;
+    overflow: hidden; /* 不加的话会因为float导致高度坍塌*/
 }
 .middle {
     float: left;
     width: 100%;
-    height: 300px;
+    height: 100px;
     background-color: rgba(255, 0, 0, .5);
 }
 .left {
@@ -69,7 +73,7 @@ body {
     left: -210px;
     float: left;
     width: 200px;
-    height: 300px;
+    height: 100px;
     margin-left: -100%;
     background-color: rgba(0, 255, 0, .5);
 }
@@ -78,7 +82,7 @@ body {
     right: -190px;
     float: left;
     width: 180px;
-    height: 300px;
+    height: 100px;
     margin-left: -180px;
     background-color: rgba(0, 0, 255, .5);
 }
@@ -95,5 +99,51 @@ body {
 
 </html>
 
-说到这里需要注意一下 由于双飞翼布局会一直随着浏览器可视区域宽度减小从而不断挤压中间部分宽度。
+- 双飞翼
+  
+  区别于圣杯，双飞翼布局会一直随着浏览器可视区域宽度减小从而不断挤压中间部分宽度。
 
+  这里不声明overfloat是不会出现如圣杯一样的，下面的文字环绕到色块上，是因为middle-container的width100%，已经占满了整行
+<html>
+
+<head>
+<style type="text/css">
+.middle2 {
+    float: left;
+    width: 100%;
+}
+.inner {
+    height: 100px;
+    margin-left: 210px;
+    margin-right: 190px;
+    background-color: rgba(255, 0, 0, .5);
+}
+.left2 {
+    float: left;
+    width: 200px;
+    height: 100px;
+    margin-left: -100%;
+    background-color: rgba(0, 255, 0, .5);
+}
+.right2 {
+    float: left;
+    width: 180px;
+    height: 100px;
+    margin-left: -180px;
+    background-color: rgba(0, 0, 255, .5);
+}
+</style>
+</head>
+
+<body>
+<div class="middle2">
+    <div class="inner"></div>
+</div>
+<div class="left2"></div>
+<div class="right2"></div>
+</body>
+
+</html>
+
+- [圣杯与双飞翼](https://juejin.im/post/5caf4043f265da039f0eff94)
+ 
