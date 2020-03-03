@@ -236,3 +236,11 @@ background-color: rgba(0, 0, 255, .5);
 </html>
 
 - [圣杯与双飞翼](https://juejin.im/post/5caf4043f265da039f0eff94)
+
+- 水平垂直居中
+    - 水平居中
+      ~~~
+      1. children: margin: 0 auto
+      2. 
+      ~~~
+    - 
