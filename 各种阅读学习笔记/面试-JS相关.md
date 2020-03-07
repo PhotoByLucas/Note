@@ -33,3 +33,4 @@
     getValue.call(a, 'yck', '24')
     getValue.apply(a, ['yck', '24'])
     ~~~
+3. 
