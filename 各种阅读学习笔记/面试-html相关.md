@@ -39,13 +39,14 @@
 
 - 表单
   1. form
-  ~~~
+  ```
   <form action="html.do" method="get">
     <input type="text"/>
   </form>
-  ~~~
+  ```
 - 表格 table
-  ~~~
+
+  ```
   <table border="1">
     <tr>
       <th>Month</th>
@@ -56,7 +57,7 @@
       <td>$100</td>
     </tr>
   </table>
-  ~~~
+  ```
 
   tr row 一行  
   th head 表头  
@@ -74,3 +75,16 @@
      - embed 嵌入内容，如插件
      - track 为诸如 video 和 audio 元素之类的媒介规定外部文本轨道。
    - 表单元素
+
+## 小题
+
+1. head 部分中的 JavaScripts 会在被调用的时候才执行。body 部分中的 JavaScripts 会在页面加载的时候被执行。
+2. 锚伪类
+
+    a:link {color: green;} /* 未访问的链接 */
+
+    a:visited {color: blue;} /* 已访问的链接 */
+
+    a:hover {color:orange;} /* 鼠标移动到链接上 */
+
+    a:active {color: yellow;} /* 选定的链接 */

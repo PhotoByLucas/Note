@@ -1,4 +1,8 @@
 ## css
+- 块 内联 内联块
+    - block : 独占一行，有宽高，有margin padding
+    - inline : 不独占，无宽高（content宽高只由内容决定），margin padding 只在水平方向有用，在竖直方向无用
+    - inline-block : 有宽高但不独占一行，content内容如同block一样
 
 - 如何引入 css
 
@@ -19,7 +23,7 @@
   内联样式 Inline style > 内部样式 Internal style sheet >外部样式 External style sheet > 浏览器默认样式
 
 - 盒模型  
-  margin border padding 内容
+  margin border padding 内容(content)
 - 定位机制
 
   1.  标准文档流
@@ -70,7 +74,7 @@
       </body>
       </div>
 
-      - clear 属性：不允许某个方向有浮动元素，用于使得一个元素不与浮动元素同一行  
+      - [clear 属性](https://juejin.im/post/5a260c6d6fb9a0452a3c2c6a#heading-4)：不允许某个方向有浮动元素，用于使得一个元素不与浮动元素同一行，但是只能作用于声明了该属性本身的标签
         clear : none 默认值，都可以有 | left 左 | right 右 | both 左右两边都不能
 
 3.  [定位 position](https://www.cnblogs.com/linghu-java/p/8964488.html)
