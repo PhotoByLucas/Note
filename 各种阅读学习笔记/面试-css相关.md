@@ -24,6 +24,9 @@
 
 - 盒模型  
   margin border padding 内容(content)
+
+  标准盒模型：width,height=content
+  ie盒模型：width,height=content+padding+border
 - 定位机制
 
   1.  标准文档流
@@ -152,10 +155,10 @@
 <html>
 <head>
 <style type="text/css">
-body {
+.ShengbeiBody {
     min-width: 600px; /*两个padding和middle宽度*/
 }
-.container {
+.containerShengbei {
     padding-left: 210px;
     padding-right: 190px;
     overflow: hidden; /* 不加的话会因为float导致高度坍塌*/
@@ -186,8 +189,8 @@ body {
 }
 </style>
 </head>
-<body>
-<div class="container">
+<body class="ShengbeiBody">
+<div class="containerShengbei">
     <div class="middle"></div>
     <div class="left"></div>
     <div class="right"></div>
@@ -208,7 +211,7 @@ body {
 float: left;
 width: 100%;
 }
-.inner {
+.innerShuang {
 height: 100px;
 margin-left: 210px;
 margin-right: 190px;
@@ -218,7 +221,7 @@ background-color: rgba(255, 0, 0, .5);
 float: left;
 width: 200px;
 height: 100px;
-margin-left: -100%;
+margin-left: -100%; 
 background-color: rgba(0, 255, 0, .5);
 }
 .right2 {
@@ -232,9 +235,9 @@ background-color: rgba(0, 0, 255, .5);
 </head>
 <body>
 <div class="middle2">
-<div class="inner"></div>
+<div class="innerShuang"></div>
 </div>
-<div class="left2"></div>
+<div class="left2">这个块声明为margin-left负百分比是因为middle已经占据了上一行百分百的宽度，需要一个负边距来容纳</div>
 <div class="right2"></div>
 </body>
 </html>
