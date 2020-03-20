@@ -1,32 +1,15 @@
-var result = 0;
-var canArrive = false;
-var lines = [];
-
-const D = 10
-const W = 4
-const pos = [1, 4 ,7]
-const sup = [6 ,3 ,5]
-
-let start = -1;
-let tempResult=[]
-function walkTo(goWaterPosition, nowWater, nowPos, time) {
-  if (nowPos + nowWater >= D) {
-    tempResult.push(time)
-    canArrive = !canArrive;
-  } else {
-    if (pos[goWaterPosition] - nowPos > nowWater) {
-      return;
-    }else{
-      walkTo(goWaterPosition+1,nowWater-(pos[goWaterPosition] - nowPos)+sup[goWaterPosition],pos[goWaterPosition],time+1)
-      walkTo(goWaterPosition+2,nowWater,nowPos,time)
-    }
-  }
+function _new(fn, ...arg) {
+  const obj = Object.create(fn.prototype);
+  const ret = fn.apply(obj, arg);
+  // return ret instanceof Object ? ret : obj;
+  return ret;
 }
 
-walkTo(0,W,0,0);
-
-if(canArrive){
-  console.log(tempResult.sort()[0])
-}else{
-  console.log(-1)
+function A(d) {
+  this.d = d;
+  return 1
 }
+var temp =new A(123)
+console.log(temp)
+console.log(new A(123));  //{a: 6}
+console.log(_new(A, 123)); //A {d: 123}   
