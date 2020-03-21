@@ -59,6 +59,7 @@
       }
       .div2 {
       	border: 3px solid red;
+        /* overflow:hidden; 声明了就可以清除浮动*/
       }
       .div2 div {
       	float: left;
@@ -78,6 +79,9 @@
       </div>
 
       - [clear 属性](https://juejin.im/post/5a260c6d6fb9a0452a3c2c6a#heading-4)：不允许某个方向有浮动元素，用于使得一个元素不与浮动元素同一行，但是只能作用于声明了该属性本身的标签
+
+        **本质**：clear属性不允许被清除浮动的元素的左边/右边挨着浮动元素，底层原理是在被清除浮动的元素上边或者下边添加足够的清除空间。
+      
         clear : none 默认值，都可以有 | left 左 | right 右 | both 左右两边都不能
 
 3.  [定位 position](https://www.cnblogs.com/linghu-java/p/8964488.html)
@@ -251,3 +255,33 @@ background-color: rgba(0, 0, 255, .5);
       2. 
       ~~~
     - 
+
+- 画三角形
+  ~~~
+  #my01{
+    width: 0;
+    height: 0;
+    border: 50px solid transparent;
+    border-bottom: 50px solid green;
+  }
+  ~~~
+- 清除浮动
+  1. 父元素建立BFC
+  2. 伪类声明clear : both 为要被清除的元素添加空间
+      ~~~
+      .clearfix:after {
+          display: table; /* 一定要是有BFC的元素 */
+          content: " ";
+          clear: both;
+      }
+      ~~~
+- 伪类/元素
+    - 伪类：其核心就是用来选择那些不能够被普通选择器选择的文档之外的元素，更多是状态，比如。
+      ~~~
+      :hover，:active，:focus，:visited，:link，:not，:first-child，:last-child
+      ~~~
+    - 伪元素：其核心就是需要创建通常不存在于文档中的元素，不存在于DOM树中的虚拟元素，它们可以像正常的html元素一样定义css，但无法使用JavaScript获取。比如
+      ~~~
+      ::before，::after，::first-letter，::first-line
+      ~~~
+
