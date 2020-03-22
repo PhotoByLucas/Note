@@ -125,5 +125,18 @@
         },time)
       }
     }
+    ~~~
+20. 继承
+    ~~~
+    // 原型链继承
+    SubType.prototype = new SuperType();
 
+    // 构造函数继承
+    function  SubType(){
+        //继承自SuperType
+        SuperType.call(this);
+    }
+
+    // es6
+    class Square extends Rectangle
     ~~~
