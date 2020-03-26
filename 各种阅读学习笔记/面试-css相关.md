@@ -252,7 +252,8 @@ background-color: rgba(0, 0, 255, .5);
     - 水平居中
       ~~~
       1. children: margin: 0 auto
-      2. 
+      2. children: position:absolute ; transform:translate(-50%,0);left:50%
+      2. children: position:absolute ; margin:0;left:0;top:0;bottom:0;right:0;
       ~~~
     - 
 

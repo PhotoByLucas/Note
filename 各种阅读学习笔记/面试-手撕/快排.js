@@ -13,6 +13,6 @@ function quicksort(array=[]){
     }
   }
 
-  return quicksort(small).concat([base],quicksort.(large))
+  return quicksort(small).concat([base],quicksort(large))
 }
 

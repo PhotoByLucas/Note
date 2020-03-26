@@ -1,3 +1,4 @@
+// https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/98
 /*
 实现一个 GoodMan:
 GoodMan("mike") 输出:
@@ -15,27 +16,6 @@ Start learning after 5 seconds
 I am mike
 Learning chinese
 */
-
-function GoodMan(name) {
-  class myMan{
-    constructor(name){
-      console.log(`I am ${name}`)
-    }
-
-    rest(time) {
-      return (function(time) {
-        setTimeout(function timer() {
-          console.log();
-        }, time * 1000);
-      })(time);
-    }
-    
-    learn(xueke){
-			console.log(`Learning ${xueke}`)
-  }}
-  
-  return new myMan(name)
-}
 
 
 /* 
@@ -66,9 +46,6 @@ whiteList = {
 };
 */
 
-function toHtml(tree, whiteList) {
-  
-}
 
 /*
 实现 multiply
@@ -79,15 +56,26 @@ multiply(1,2)(3).result == 6
 multiply(1,2)(3,4).result == 24
 multiply(1,2)(3,4)(5).result == 120
 */
-
-
-function multiply(a, b) {
-  var result = function(x,y) {
-    if(arguments.length==1){
-      return multiply(a*x);
-    }else{
-      return multiply(a*x*y);
+function add() {
+    var sum = 0;
+    let argc1 = Array.from(arguments);
+    argc1.forEach(element => {
+      sum += element;
+    });
+  
+    function temp() {
+      let argctemp =Array.from(arguments); 
+      argctemp.forEach(element => {
+        sum += element;
+      });
+      return temp;
     }
-  };
-  return result(a,b)
-}
+  
+    temp.toString = temp.valueOf = function() {
+      return sum;
+    };
+  
+    return temp;
+  }
+  console.log(add(2,1)(3)(4)(5)); // 14 如果不重写valueOf和tostring方法，就要多一个括号
+  
