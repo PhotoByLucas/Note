@@ -1,6 +1,17 @@
-var a = {n: 1};
-var b = a;
-a.x = a = {n: 2};
+const myLifeSummedUp = {
+  name:'wujunchuan',
+  age:22,
+  locate:{
+  country:'china',
+  city:'xiamen',
+  school:'XMUT'
+  }
+}
 
-console.log(a.x) 	
-console.log(b.x)
+for (let item in myLifeSummedUp) {
+  console.log(item)
+}
+
+// for (let item of myLifeSummedUp) {
+//   console.log(item)
+// }
