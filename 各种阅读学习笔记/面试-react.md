@@ -25,3 +25,15 @@
      2. mapDispatchToProps
 
 3. hook
+4. shouldComponentUpdate 能够写出更优化的dom diff算法，可以极大的提高性能，重写shouldComponentUpdate来避免不必要的dom操作
+5. [生命周期](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)
+   - render阶段，可被打断重启  
+      1. componentWillMount
+      2. componentWillUpdate
+      3. shouldComponentUpdate
+   - commit阶段，不能被打断
+      1. componentDidMount
+      2. componentDidUpdate
+      3. componentWillUnmount
+
+6. 高阶组件是参数为组件，返回值为新组件的函数。

@@ -91,3 +91,39 @@
    5. 完成模块编译：在经过第 4 步使用 Loader 翻译完所有模块后，得到了每个模块被翻译后的最终内容以及它们之间的依赖关系
    6. 输出资源：根据入口和模块之间的依赖关系，组装成一个个包含多个模块的 Chunk，再把每个 Chunk 转换成一个单独的文件加入到输出列表，这步是可以修改输出内容的最后机会
    7. 输出完成：在确定好输出内容后，根据配置确定输出的路径和文件名，把文件内容写入到文件系统
+
+8. 手写loader
+    ~~~
+    // 定义
+    module.exports = function(src) {
+      //src是原文件内容（abcde），下面对内容进行处理，这里是反转
+      var result = src.split('').reverse().join('');
+      //返回JavaScript源码，必须是String或者Buffer
+      return `module.exports = '${result}'`;
+    }
+    //使用
+    {
+      test: /\.txt$/,
+      use: [
+        {
+          './path/reverse-txt-loader'
+        }
+      ]
+    },
+    ~~~
+9. 手写插件 
+    ~~~
+    apply (compiler) {
+      const afterEmit = (compilation, cb) => {
+        cb()
+        setTimeout(function () {
+          process.exit(0)
+        }, 1000)
+      }
+
+      compiler.plugin('after-emit', afterEmit)
+    }
+    }
+
+    module.exports = BuildEndPlugin
+    ~~~
