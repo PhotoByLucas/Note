@@ -1,5 +1,1 @@
-const name = "Lydia";
-age = 21;
-
-console.log(delete name);  // 
-console.log(delete age);
+[1, 2, 3, 4].reduce((x, y) => console.log(x, y));

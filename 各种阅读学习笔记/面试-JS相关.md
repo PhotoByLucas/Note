@@ -96,7 +96,7 @@
     - Object.hasOwnProperty 会忽略原型链继承的属性
     - in 会计算所有属性
       
-18. 手撕快排**todo**
+18. 手撕快排
 19. es6 class转es5
     ~~~
     class Person {

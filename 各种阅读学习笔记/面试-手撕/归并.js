@@ -1,12 +1,12 @@
 function merge(left=[],right=[]){
   let result=[]
   while(left.length&&right.length){
-    let leftOne=left.shift()
-    let rightOne=right.shift()
+    let leftOne=left[0]
+    let rightOne=right[0]
     if(leftOne<rightOne){
-      result.push(leftOne)
+      result.push(left.shift)
     }else{
-      result.push(rightOne)
+      result.push(right.shift)
     }
   }
   if(left.length) result.concat(left)
