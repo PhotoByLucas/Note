@@ -184,11 +184,14 @@
 
         `Object.freeze()` 所有属性标记为 `writable:false`
 
-   7. [[Get]] 
-   8. [[Put]]
-   9. Getter 和 Setter 
+   7. [[Get]]
 
-      ~~~
+      其实 `myObject.a` 就是在 myObject 上实现了[[Get]]操作
+
+   8. [[Put]]
+   9. Getter 和 Setter
+
+      ```
       var myObject = {
         get a() {
           return this._a
@@ -197,4 +200,15 @@
           this._a = val
         }
       }
-      ~~~
+      ```
+   10. 存在性
+
+      - `'a' in myObject` 会查找原型链
+      - `Object.hasOwnProperty` 会不查找
+
+      - 枚举 enumerable
+
+        - `for ... in` 或 `Object.keys()` 查找可枚举的对象
+        - `Object.getOwnPropertyName` 查找对象包含属性，无论是否可枚举
+
+4. 遍历
