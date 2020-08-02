@@ -1,5 +1,2 @@
-for (var index = 0; index <10; index++) {
-  setTimeout((i)=>{
-    console.log(i)
-  },0,index)
-}
+const temp = '\\\https://ticket-10039692.cos.ap-shanghai.myqcloud.com/smarty_1595770567355_7785.png?q-sign-algorithm=sha1&q-ak=AKIDcM4Y4hP5clJNqJINtJF_hMCOhfEgqCZCiFrU2fGGyzbe_FEAO5YpSnfl9NxMCkMm&q-sign-time=1595770568;1595771468&q-key-time=1595770568;1595771468&q-header-list=&q-url-param-list=&q-signature=d8d879823cf796d8a22e07f1596918d7c5c49f3a&x-cos-security-token=pyCincJbWa9h3Q84QlMCrFhUOkSUPzUb59b21fc84b93d54a995923bafd7e6b86FagyUIGaH7-EWUcMnwZ8HAAY3-TJuPeNhZW0F7hrPgXK_mbkA-boHGB6ddI1fAnVc8Nu6UQPQBPIshOjfJg9CPROH741kQjm_urERVCaVdaDGtTXz_LNYdjH7uawrdcTvuLQNPpUe_JnJeIlbH4L2SJ8oMAdPqjwyY9RSvO_9tMFEKSR8BPc3BCZfcdnWF8L7HhLmEnmLpKU3eXKM4FY6ppDcATyQbgnteEBU2eMbL2yWdiM5i7tBq4NoQ94QJbK2n7mGeCKP2_x86JuI9RFMoqKOIj0XlFbix6QvP9A5XcQKC5h-qpZGtv8Kg0K7dOWk3bOpv2B6sWN36eds7tWcSKtucGLV_-S1RLyywe0d-TgbaD4x7Q6xSSFwQRhiXHtIJ8M98WRErPiIhUxx5s1Gim1EN8Lsb4PsSs38D1Yv83zH3ILPf73JPrrEMrckf7EMYXeJQgxzAMsAFrJ5PLaZYTXrO01pOP-akJBfhwOxdSGf9uttxIB-ICOVWCoC5Yz';
+console.log(temp.replace(/\?q-sign-algorithm=[\s\S]*/, ''))
