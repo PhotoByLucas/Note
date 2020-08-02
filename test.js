@@ -1,1 +1,7 @@
-[1, 2, 3, 4].reduce((x, y) => console.log(x, y));
+function addSomeNumber(num){ 
+    return num + 100; 
+   } 
+   console.log(addSomeNumber(100))
+   function addSomeNumber(num) { 
+    return num + 200; 
+   } 
