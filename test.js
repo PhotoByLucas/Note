@@ -27,6 +27,7 @@ setImmediate(function() {
     })
 })
 
+<<<<<<< HEAD
 process.nextTick(function() {
     console.log('glob1_nextTick');
 })
@@ -72,3 +73,6 @@ setImmediate(function() {
         console.log('immediate2_then')
     })
 })
+=======
+console.log(person,p)
+>>>>>>> a71f4cdf33e38ccdf1488c75ede6f57aee112c02
