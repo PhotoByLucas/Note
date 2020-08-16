@@ -1,12 +1,74 @@
-// 创建一个对象person，他有两个指向属性age和name的引用
-var person = {
-  age: 12,
-  name: 'aaaa'
-};
+// demo02
+console.log('golb1');
 
-person.name = null; // 虽然设置为null，但因为person对象还有指向name的引用，因此name不会回收
+setTimeout(function() {
+    console.log('timeout1');
+    process.nextTick(function() {
+        console.log('timeout1_nextTick');
+    })
+    new Promise(function(resolve) {
+        console.log('timeout1_promise');
+        resolve();
+    }).then(function() {
+        console.log('timeout1_then')
+    })
+})
 
-var p = person; 
-person = 1;  
+setImmediate(function() {
+    console.log('immediate1');
+    process.nextTick(function() {
+        console.log('immediate1_nextTick');
+    })
+    new Promise(function(resolve) {
+        console.log('immediate1_promise');
+        resolve();
+    }).then(function() {
+        console.log('immediate1_then')
+    })
+})
 
-console.log(person,p)
+process.nextTick(function() {
+    console.log('glob1_nextTick');
+})
+new Promise(function(resolve) {
+    console.log('glob1_promise');
+    resolve();
+}).then(function() {
+    console.log('glob1_then')
+})
+
+setTimeout(function() {
+    console.log('timeout2');
+    process.nextTick(function() {
+        console.log('timeout2_nextTick');
+    })
+    new Promise(function(resolve) {
+        console.log('timeout2_promise');
+        resolve();
+    }).then(function() {
+        console.log('timeout2_then')
+    })
+})
+
+process.nextTick(function() {
+    console.log('glob2_nextTick');
+})
+new Promise(function(resolve) {
+    console.log('glob2_promise');
+    resolve();
+}).then(function() {
+    console.log('glob2_then')
+})
+
+setImmediate(function() {
+    console.log('immediate2');
+    process.nextTick(function() {
+        console.log('immediate2_nextTick');
+    })
+    new Promise(function(resolve) {
+        console.log('immediate2_promise');
+        resolve();
+    }).then(function() {
+        console.log('immediate2_then')
+    })
+})
