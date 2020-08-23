@@ -81,7 +81,7 @@
       3. 若String==Number，则 toNumber(String)==Number
       4. 若Bool==Number，则 toNumber(Bool)==Number
       5. 若Object == String | Number | Symbol ，则toPrimitive(Object)
-      6. 其余的返回false
+      6. 其余的返回 false
 12. 虚值:转换为布尔值时变为 false 的值。
     ~~~
     const falsyValues = ['', 0, null, undefined, NaN, false];

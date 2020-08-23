@@ -1,8 +1,10 @@
 ## css
+
 - 块 内联 内联块
-    - block : 独占一行，有宽高，有margin padding
-    - inline : 不独占，无宽高（content宽高只由内容决定），margin padding 只在水平方向有用，在竖直方向无用
-    - inline-block : 有宽高但不独占一行，content内容如同block一样
+
+  - block : 独占一行，有宽高，有 margin padding
+  - inline : 不独占，无宽高（content 宽高只由内容决定），margin padding 只在水平方向有用，在竖直方向无用
+  - inline-block : 有宽高但不独占一行，content 内容如同 block 一样
 
 - 如何引入 css
 
@@ -26,7 +28,8 @@
   margin border padding 内容(content)
 
   标准盒模型：width,height=content
-  ie盒模型：width,height=content+padding+border
+  ie 盒模型：width,height=content+padding+border
+
 - 定位机制
 
   1.  标准文档流
@@ -80,8 +83,8 @@
 
       - [clear 属性](https://juejin.im/post/5a260c6d6fb9a0452a3c2c6a#heading-4)：不允许某个方向有浮动元素，用于使得一个元素不与浮动元素同一行，但是只能作用于声明了该属性本身的标签
 
-        **本质**：clear属性不允许被清除浮动的元素的左边/右边挨着浮动元素，底层原理是在被清除浮动的元素上边或者下边添加足够的清除空间。
-      
+        **本质**：clear 属性不允许被清除浮动的元素的左边/右边挨着浮动元素，底层原理是在被清除浮动的元素上边或者下边添加足够的清除空间。
+
         clear : none 默认值，都可以有 | left 左 | right 右 | both 左右两边都不能
 
 3.  [定位 position](https://www.cnblogs.com/linghu-java/p/8964488.html)
@@ -99,7 +102,8 @@
 
   1. 创建 BFC
      - 根元素或其他包含他的元素
-     - float 不为 none, position:fixed|absolute 脱离文档流
+     - 浮动元素：float 不为 none
+     - 绝对定位元素：position:fixed|absolute 脱离文档流
      - display: inline-block 行内块
      - display: table-cell 表格单元格
      - display: flex | inline-flex
@@ -114,7 +118,13 @@
      4. BFC 就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素
      5. [计算 BFC 的高度时，考虑 BFC 所包含的所有元素，连浮动元素也参与计算](https://juejin.im/post/59b73d5bf265da064618731d#heading-15)
      6. [BFC 的区域不会与 float box 重叠。](https://juejin.im/post/59b73d5bf265da064618731d#heading-17)
-  4. 应用 1. 防止外边距坍塌 2. 容纳浮动元素高度，闭合浮动 3. 防止与浮动元素重叠
+  4. 应用
+
+     1. 防止外边距坍塌
+     2. 容纳浮动元素高度，闭合浮动
+     3. 防止与浮动元素重叠
+
+
      <html>
      <head>
      <style>
@@ -238,51 +248,51 @@ background-color: rgba(0, 0, 255, .5);
 </style>
 </head>
 <body>
-<div class="middle2">
-<div class="innerShuang"></div>
-</div>
-<div class="left2">这个块声明为margin-left负百分比是因为middle已经占据了上一行百分百的宽度，需要一个负边距来容纳</div>
-<div class="right2"></div>
+  <div class="middle2">
+    <div class="innerShuang"></div>
+  </div>
+  <div class="left2">这个块声明为margin-left负百分比是因为middle已经占据了上一行百分百的宽度，需要一个负边距来容纳</div>
+  <div class="right2"></div>
 </body>
 </html>
 
 - [圣杯与双飞翼](https://juejin.im/post/5caf4043f265da039f0eff94)
 
 - 水平垂直居中
-    - 水平居中
-      ~~~
-      1. children: margin: 0 auto
-      2. children: position:absolute ; transform:translate(-50%,0);left:50%
-      2. children: position:absolute ; margin:0;left:0;top:0;bottom:0;right:0;
-      ~~~
-    - 
+
+  - 水平居中
+    ```
+    1. children: margin: 0 auto
+    2. children: position:absolute ; transform:translate(-50%,0);left:50%
+    2. children: position:absolute ; margin:0;left:0;top:0;bottom:0;right:0;
+    ```
+  -
 
 - 画三角形
-  ~~~
+  ```
   #my01{
     width: 0;
     height: 0;
     border: 50px solid transparent;
     border-bottom: 50px solid green;
   }
-  ~~~
+  ```
 - 清除浮动
-  1. 父元素建立BFC
-  2. 伪类声明clear : both 为要被清除的元素添加空间
-      ~~~
-      .clearfix:after {
-          display: table; /* 一定要是有BFC的元素 */
-          content: " ";
-          clear: both;
-      }
-      ~~~
+  1. 父元素建立 BFC
+  2. 伪类声明 clear : both 为要被清除的元素添加空间
+     ```
+     .clearfix:after {
+         display: table; /* 一定要是有BFC的元素 */
+         content: " ";
+         clear: both;
+     }
+     ```
 - 伪类/元素
-    - 伪类：其核心就是用来选择那些不能够被普通选择器选择的文档之外的元素，更多是状态，比如。
-      ~~~
-      :hover，:active，:focus，:visited，:link，:not，:first-child，:last-child
-      ~~~
-    - 伪元素：其核心就是需要创建通常不存在于文档中的元素，不存在于DOM树中的虚拟元素，它们可以像正常的html元素一样定义css，但无法使用JavaScript获取。比如
-      ~~~
-      ::before，::after，::first-letter，::first-line
-      ~~~
-
+  - 伪类：其核心就是用来选择那些不能够被普通选择器选择的文档之外的元素，更多是状态，比如。
+    ```
+    :hover，:active，:focus，:visited，:link，:not，:first-child，:last-child
+    ```
+  - 伪元素：其核心就是需要创建通常不存在于文档中的元素，不存在于 DOM 树中的虚拟元素，它们可以像正常的 html 元素一样定义 css，但无法使用 JavaScript 获取。比如
+    ```
+    ::before，::after，::first-letter，::first-line
+    ```
