@@ -270,7 +270,7 @@ background-color: rgba(0, 0, 255, .5);
 
 - 画三角形
   ```
-  #my01{
+  #my01 {
     width: 0;
     height: 0;
     border: 50px solid transparent;

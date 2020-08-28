@@ -332,7 +332,7 @@
       复杂链表的节点中，有两个指针指向，分别指向下一个节点和另一个随机节点（也可能是 null）
 
       ```
-        class Node{
+        class Node {
           var nodeValue
           var nextNodePoint // 指向下一个链表结点的指针
           var complexNodePoint // 指向随机一个链表结点的指针

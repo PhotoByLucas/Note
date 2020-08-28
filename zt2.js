@@ -1,8 +1,10 @@
-var a = {n: 1};
-var b = a;
-a.x = a = {n: 2};
+function add(...argc) {
+  let result = 0 
+  for (let index = 0; index < argc.length; index++) {
+    result += argc[index]
+  }
+  
+  return this
+}
 
-console.log(a.x) 
-console.log(b.x)
-console.log(a) 
-console.log(b)
+console.log(add(3,4,5)(6)(7))
