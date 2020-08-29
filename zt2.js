@@ -1,21 +1,18 @@
-function add(...argc) {
-  let result = 0 
-  for (let index = 0; index < argc.length; index++) {
-    result += argc[index]
+function Foo() {
+  Foo.a = function() {
+    console.log(1)
   }
-  
-  function b (...brgc) {
-    for (let index = 0; index < brgc.length; index++) {
-      result += brgc[index]
-    }
-    return b
+  this.a = function() {
+    console.log(2)
   }
-
-  b.toString = function() {
-    return result
   }
-
-  return b
-}
-
-console.log(add(3,4,5)(6)(7))
+  Foo.prototype.a = function() {
+  console.log(3)
+  }
+  Foo.a = function() {
+  console.log(4)
+  }
+  Foo.a();
+  let obj = new Foo();
+  obj.a();
+  Foo.a();

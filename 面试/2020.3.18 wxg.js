@@ -108,26 +108,24 @@ multiply(1,2)(3).result == 6
 multiply(1,2)(3,4).result == 24
 multiply(1,2)(3,4)(5).result == 120
 */
-function add() {
-    var sum = 0;
-    let argc1 = Array.from(arguments);
-    argc1.forEach(element => {
-      sum += element;
-    });
-  
-    function temp() {
-      let argctemp =Array.from(arguments); 
-      argctemp.forEach(element => {
-        sum += element;
-      });
-      return temp;
-    }
-  
-    temp.toString = temp.valueOf = function() {
-      return sum;
-    };
-  
-    return temp;
+function add(...argc) {
+  let result = 0 
+  for (let index = 0; index < argc.length; index++) {
+    result += argc[index]
   }
-  console.log(add(2,1)(3)(4)(5)); // 14 如果不重写valueOf和tostring方法，就要多一个括号
   
+  function fb (...brgc) {
+    for (let index = 0; index < brgc.length; index++) {
+      result += brgc[index]
+    }
+    return fb
+  }
+
+  fb.toString = function() {
+    return result
+  }
+
+  return fb
+}
+
+console.log(add(3,4,5)(6,8)(7,0)) 
