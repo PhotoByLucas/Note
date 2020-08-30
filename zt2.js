@@ -1,18 +1,17 @@
-function Foo() {
-  Foo.a = function() {
-    console.log(1)
-  }
-  this.a = function() {
-    console.log(2)
-  }
-  }
-  Foo.prototype.a = function() {
-  console.log(3)
-  }
-  Foo.a = function() {
-  console.log(4)
-  }
-  Foo.a();
-  let obj = new Foo();
-  obj.a();
-  Foo.a();
+const p1 = () => new Promise((resolve, reject) => {
+  setTimeout(() => {
+    console.log('1')
+    resolve(1)
+  }, 1000)
+})
+
+const p2 = () => new Promise((resolve, reject) => {
+  setTimeout(() => {
+    console.log('2')
+    resolve(2)
+  }, 2000)
+})
+
+Promise.all([p1(), p2()]).then((res) => {
+  console.log(res)
+})
