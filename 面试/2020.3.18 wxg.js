@@ -17,57 +17,57 @@ I am mike
 Learning chinese
 */
 
-// class LazyMan {
-//   constructor(name) {
-//     this.name = name
-//     this.task = []
-//     console.log('hi i am ' + this.name)
-//     setTimeout(() => {
-//       this.doTask()
-//     }, 0)
-//   }
+class LazyMan {
+  constructor(name) {
+    this.name = name
+    this.task = []
+    console.log('hi i am ' + this.name)
+    setTimeout(() => {
+      this.doTask()
+    }, 0)
+  }
   
-//   doTask() {
-//     if(this.task.length) {
-//       this.task.shift()()
-//     }
-//   }
+  doTask() {
+    if(this.task.length) {
+      this.task.shift()()
+    }
+  }
   
-//   eat(food) {
-//     this.task.push(() => {
-//       console.log(food)
-//       this.doTask()
-//     })
-//     return this
-//   }
+  eat(food) {
+    this.task.push(() => {
+      console.log(food)
+      this.doTask()
+    })
+    return this
+  }
 
-//   sleep(time) {
-//     this.task.push(() => {
-//       setTimeout(() => {
-//         console.log('sleep ' + time)
-//         this.doTask()
-//       }, time*1000 )
-//     })
-//     return this
-//   } 
+  sleep(time) {
+    this.task.push(() => {
+      setTimeout(() => {
+        console.log('sleep ' + time)
+        this.doTask()
+      }, time*1000 )
+    })
+    return this
+  } 
 
-//   sleepFirst(time) {
-//     this.task.unshift(() => {
-//       setTimeout(() => {
-//         console.log('sleep first' + time)
-//         this.doTask()
-//       }, time*1000 )
-//     })
-//     return this
-//   }
+  sleepFirst(time) {
+    this.task.unshift(() => {
+      setTimeout(() => {
+        console.log('sleep first' + time)
+        this.doTask()
+      }, time*1000 )
+    })
+    return this
+  }
 
-// }
+}
 
-// function lazyMan(name) {
-//   return new LazyMan(name)
-// }
+function lazyMan(name) {
+  return new LazyMan(name)
+}
 
-// lazyMan('Tony').eat('lunch').sleepFirst(1).sleep(1).eat('dinner')
+lazyMan('Tony').eat('lunch').sleepFirst(1).sleep(1).eat('dinner')
 
 
 /* 

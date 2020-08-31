@@ -1,5 +1,7 @@
 [基础](https://juejin.im/post/5e01de37f265da33ab637daf?utm_source=gold_browser_extension#heading-6)
 
+[链接](https://juejin.im/post/6844904008335753230)
+
 1. 是什么
 
    webpack 它做的事情是，分析你的项目结构，找到 JavaScript 模块以及其它的一些浏览器不能直接运行的拓展语言（Scss，TypeScript 等），并将其打包为合适的格式以供浏览器使用。
@@ -84,6 +86,7 @@
    ```
 
 7. 构建流程
+
    1. 初始化参数：从配置文件和 Shell 语句中读取与合并参数，得出最终的参数
    2. 开始编译：用上一步得到的参数初始化 Compiler 对象，加载所有配置的插件，执行对象的 run 方法开始执行编译
    3. 确定入口：根据配置中的 entry 找出所有的入口文件
@@ -92,38 +95,47 @@
    6. 输出资源：根据入口和模块之间的依赖关系，组装成一个个包含多个模块的 Chunk，再把每个 Chunk 转换成一个单独的文件加入到输出列表，这步是可以修改输出内容的最后机会
    7. 输出完成：在确定好输出内容后，根据配置确定输出的路径和文件名，把文件内容写入到文件系统
 
-8. 手写loader
-    ~~~
-    // 定义
-    module.exports = function(src) {
-      //src是原文件内容（abcde），下面对内容进行处理，这里是反转
-      var result = src.split('').reverse().join('');
-      //返回JavaScript源码，必须是String或者Buffer
-      return `module.exports = '${result}'`;
-    }
-    //使用
-    {
-      test: /\.txt$/,
-      use: [
-        {
-          './path/reverse-txt-loader'
-        }
-      ]
-    },
-    ~~~
-9. 手写插件 
-    ~~~
-    apply (compiler) {
-      const afterEmit = (compilation, cb) => {
-        cb()
-        setTimeout(function () {
-          process.exit(0)
-        }, 1000)
-      }
+8. 手写 loader
+   ```
+   // 定义
+   module.exports = function(src) {
+     // src是原文件内容（abcde），下面对内容进行处理，这里是反转
+     var result = src.split('').reverse().join('');
+     // 返回JavaScript源码，必须是String或者Buffer
+     return `module.exports = '${result}'`;
+   }
+   //使用
+   {
+     test: /\.txt$/,
+     use: [
+       {
+         './path/reverse-txt-loader'
+       }
+     ]
+   },
+   ```
+9. 手写插件
 
-      compiler.plugin('after-emit', afterEmit)
-    }
-    }
+   ```
+   apply (compiler) {
+     const afterEmit = (compilation, cb) => {
+       cb()
+       setTimeout(function () {
+         process.exit(0)
+       }, 1000)
+     }
 
-    module.exports = BuildEndPlugin
-    ~~~
+     compiler.plugin('after-emit', afterEmit)
+   }
+   }
+
+   module.exports = BuildEndPlugin
+   ```
+
+10. 常见插件
+
+    1. html-webpack-plugin
+
+       当使用 webpack 打包时，创建一个 html 文件，并把 webpack 打包后的静态文件自动插入到这个 html 文件当中。
+
+    2. 预渲染插件

@@ -87,6 +87,9 @@
     const falsyValues = ['', 0, null, undefined, NaN, false];
     ~~~
 13. IIFE(Immediately Invoked Function Expression)立即调用函数
+
+    会把this指向指到全局
+    
 14. Array.prototype
     1. map 通过指定函数处理数组的每个元素，并返回处理后的新数组。
     2. filter 检测数值元素，并返回符合条件所有元素的数组。
@@ -114,7 +117,7 @@
     }
     
     function Person(name){
-      this.name=name
+      this.name = name
       Person.prototype.greet = function(){
         console.log("Hi, my name is "+this.name)
       }
@@ -131,9 +134,9 @@
     // 原型链继承
     SubType.prototype = new SuperType();
 
-    // 构造函数继承
-    function  SubType(){
-        //继承自SuperType
+    // 构造函数继承 
+    function  SubType() {
+        // 继承自SuperType
         SuperType.call(this);
     }
 
