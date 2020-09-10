@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+        
+    <meta charset="UTF-8" />
+        
+        
+    <title>Document</title>
+  </head>
+
+  <body>
+    <input id="input" />     
+    <p id="show">dsafsdaf</p>
+    <button>改变</button>
+  </body>
+  <!-- 
+<script>
+      let obj = {}
+      function bind(dom, key) {
+          let value
+          Object.defineProperty(obj, key, {
+              set(v) {
+                  document.getElementById('show').innerText = v
+                  dom.value = v
+                  value = v
+              },
+              get() {
+                  return value
+              }
+          })
+  
+          dom.oninput = e => {
+              obj[key] = e.target.value
+          }
+      }
+  
+      bind(document.getElementById('input'), 'text')
+      document.getElementsByTagName("button")[0].onclick = () => {
+          obj.text = '??'
+      }
+  </script> -->
+  <script>
+    let myobj = {}
+    function bind(node, key) {
+      let value
+      Object.defineProperty(myobj, key, {
+        set(val) {
+          value = val
+          node.innerHTML = val
+        },
+        get() {
+          console.log(value)
+          return value
+        }
+      })
+    }
+    bind(document.getElementById('show'), 'input')
+    const inputEle = document.getElementById('input')
+    inputEle.addEventListener('input', (e) => {
+      console.log(e.target.value)
+      myobj['input'] = e.target.value
+    })
+  </script>
+</html>

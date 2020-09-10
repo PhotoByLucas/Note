@@ -77,31 +77,31 @@
 11. == 和 ===
     - 规则 假设 x == y
       1. 如果类型相同，则执行 x===y
-      2. undefined==null 为true
-      3. 若String==Number，则 toNumber(String)==Number
-      4. 若Bool==Number，则 toNumber(Bool)==Number
-      5. 若Object == String | Number | Symbol ，则toPrimitive(Object)
+      2. undefined==null 为 true
+      3. 若 String==Number，则 toNumber(String)==Number
+      4. 若 Bool==Number，则 toNumber(Bool)==Number
+      5. 若 Object == String | Number | Symbol ，则 toPrimitive(Object)
       6. 其余的返回 false
 12. 虚值:转换为布尔值时变为 false 的值。
-    ~~~
+    ```
     const falsyValues = ['', 0, null, undefined, NaN, false];
-    ~~~
+    ```
 13. IIFE(Immediately Invoked Function Expression)立即调用函数
 
-    会把this指向指到全局
-    
+    会把 this 指向指到全局
+
 14. Array.prototype
     1. map 通过指定函数处理数组的每个元素，并返回处理后的新数组。
     2. filter 检测数值元素，并返回符合条件所有元素的数组。
-15. NaN表示**非数字**是 JS 中的一个值，该值是将数字转换或执行为非数字值的运算结果
+15. NaN 表示**非数字**是 JS 中的一个值，该值是将数字转换或执行为非数字值的运算结果
 16. 不用%来判断奇偶 使用&运算
 17. 判断对象中是否拥有某个属性
     - Object.hasOwnProperty 会忽略原型链继承的属性
     - in 会计算所有属性
-      
 18. 手撕快排
-19. es6 class转es5
-    ~~~
+19. es6 class 转 es5
+
+    ```
     class Person {
       constructor (name) {
             this.name = name;
@@ -115,7 +115,7 @@
             }, time);
       }
     }
-    
+
     function Person(name){
       this.name = name
       Person.prototype.greet = function(){
@@ -128,13 +128,15 @@
         },time)
       }
     }
-    ~~~
+    ```
+
 20. 继承
-    ~~~
+
+    ```
     // 原型链继承
     SubType.prototype = new SuperType();
 
-    // 构造函数继承 
+    // 构造函数继承
     function  SubType() {
         // 继承自SuperType
         SuperType.call(this);
@@ -142,4 +144,12 @@
 
     // es6
     class Square extends Rectangle
-    ~~~
+    ```
+
+21. 严格模式
+
+|          | 非严格             | 严格             |
+| -------- | ------------------ | ---------------- |
+| 创建变量 | a = 1;             | 一定要 var       |
+| 变量delete | 可             | 不可       |
+| this     | 独立调用会指向全局 | 会指向 undefined |

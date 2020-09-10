@@ -17,7 +17,7 @@ function merge (left, right) {
       }
   }
   
-  result.push(...left,...right) 
+  result.push(...left, ...right) 
   return result;
 }
 
